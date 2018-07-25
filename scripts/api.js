@@ -21,13 +21,15 @@ const api = (function () {
     })
   }
 
-  /*
-    success: (response) => {
-      console.log(response);
-    }
-  */
   return {
     getItems,
     createItem,
   };
 }());
+
+
+  /*
+    success: (response) => {
+      console.log(response);
+    }
+  */
