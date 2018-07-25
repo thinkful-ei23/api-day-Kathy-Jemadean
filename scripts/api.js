@@ -8,8 +8,33 @@ const api = (function() {
     //callback('api module works!');
   };
 
+  const createItem = function(name, callback) {
+      const newItem = JSON.stringify({
+        name,
+      });
+      $.ajax({
+          url: `${BASE_URL}/items`,
+          method: 'POST',
+          contentType: 'application/json',
+          data: newItem,
+          success: callback,
+
+      })
+
+
+  }
+
+  /*
+    success: (response) => {
+      console.log(response);
+    }
+  */
+
+
+
+
   return{
     getItems,
+    createItem,
   };
-
 }());
