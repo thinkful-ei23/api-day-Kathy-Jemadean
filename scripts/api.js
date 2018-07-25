@@ -1,27 +1,24 @@
 'use strict';
 /* global shoppingList, store, $ */
 
-const api = (function() {
+const api = (function () {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/kathy-jemadean';
-  const getItems = function(callback) {
+
+  const getItems = function (callback) {
     $.getJSON(`${BASE_URL}/items`, callback);
-    //callback('api module works!');
   };
 
-  const createItem = function(name, callback) {
-      const newItem = JSON.stringify({
-        name,
-      });
-      $.ajax({
-          url: `${BASE_URL}/items`,
-          method: 'POST',
-          contentType: 'application/json',
-          data: newItem,
-          success: callback,
-
-      })
-
-
+  const createItem = function (name, callback) {
+    const newItem = JSON.stringify({
+      name,
+    });
+    $.ajax({
+      url: `${BASE_URL}/items`,
+      method: 'POST',
+      contentType: 'application/json',
+      data: newItem,
+      success: callback,
+    })
   }
 
   /*
@@ -29,11 +26,7 @@ const api = (function() {
       console.log(response);
     }
   */
-
-
-
-
-  return{
+  return {
     getItems,
     createItem,
   };
