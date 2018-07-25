@@ -1,5 +1,5 @@
 'use strict';
-/* global shoppingList, store, $ */
+/* global shoppingList, store, $, id */
 
 const api = (function () {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/kathy-jemadean';
@@ -18,12 +18,23 @@ const api = (function () {
       contentType: 'application/json',
       data: newItem,
       success: callback,
-    })
-  }
+    });
+  };
+
+  const updateItem = function (id, updateData, callback) {
+    $.ajax({
+      url: `${BASE_URL}/items/${id}`,
+      method: 'PATCH',
+      contentType: 'application/json',
+      data: JSON.stringify(updateData),
+      success: callback
+    });
+  };
 
   return {
     getItems,
     createItem,
+    updateItem,
   };
 }());
 
